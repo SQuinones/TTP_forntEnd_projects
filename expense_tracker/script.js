@@ -1,3 +1,6 @@
+
+// In this lines I am creating const variables and assigned a 
+//getElementById() method that return the element by its specific id 
 const balance = document.getElementById('balance');
 const money_plus = document.getElementById('money-plus');
 const money_minus = document.getElementById('money-minus');
@@ -6,6 +9,7 @@ const form = document.getElementById('form');
 const text = document.getElementById('text');
 const amount = document.getElementById('amount');
 
+// in this line the JSON.parse() to convert text into a JavaScript object
 const localStorageTransactions = JSON.parse(
     localStorage.getItem('transactions')
     );
@@ -16,9 +20,10 @@ const localStorageTransactions = JSON.parse(
 // Add transaction
 function addTransaction(e) {
   e.preventDefault();
-
+// this condition checks the user input for value ant amount
   if (text.value.trim() === '' || amount.value.trim() === '') {
     alert('Please add a text and amount');
+// this statement will will calculate the amount
   }else {
     const transaction = {
       id: generateID(),
@@ -55,13 +60,15 @@ function generateID() {
     item.classList.add(transaction.amount < 0 ? 'minus' : 'plus');
   
     item.innerHTML = `
+    //Math provides mathematics functionalities
       ${transaction.text} <span>${sign}${Math.abs(
       transaction.amount
     )}</span> <button class="delete-btn" onclick="removeTransaction(${
       transaction.id
     })">x</button>
     `;
-  
+
+    //In this line we are moving item from its current position to the new position
     list.appendChild(item);
   }
 
@@ -103,7 +110,7 @@ function removeTransaction(id) {
   // Init app
   function init() {
     list.innerHTML = '';
-  
+    
     transactions.forEach(addTransactionDOM);
     updateValues();
   }
