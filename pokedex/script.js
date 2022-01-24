@@ -17,7 +17,7 @@ const colors = {
     normal: '#F5F5F5'
 }
 
-const main_type = Object.keys(colors)
+const main_types = Object.keys(colors)
 
 const fetchPokemons = async () => {
     for(let i = 1; i <= pokemon_count; i++) {
@@ -47,7 +47,7 @@ const createPokemonCard = (pokemon) => {
 
     const pokemonInnerHTML = `
     <div class="img-container">
-    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon.id}.png"" 
+    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon.id}.png" 
     alt="${name}">
     </div>
     <div class="info">
